@@ -1,0 +1,20 @@
+import argparse
+
+def parameter_parser():
+    parser = argparse.ArgumentParser(description="Node classification model training script")
+    parser.add_argument("--dataset", type=str, default='Cora', help="Dataset: Cora, Citeseer, Pubmed, CS, Physics")
+    parser.add_argument("--split", type=str, default='random', help="Split method")
+    parser.add_argument("--device", type=str, default="cpu", help="Device")
+    parser.add_argument("--hidden_size", type=int, default=256, help="Hidden unit size")
+    parser.add_argument("--lr", type=float, default=0.01, help="Learning rate")
+    parser.add_argument("--weight_decay", type=float, default=0.01, help="Weight decay")
+    parser.add_argument("--dropout", type=float, default=0.7, help="Dropout rate")
+    parser.add_argument("--coarse_layers", type=int, default=6, help="Number of coarse layers")
+    parser.add_argument("--num_layers", type=int, default=1, help="Number of GNN layers")
+    parser.add_argument("--GNN", type=str, default="GCN", help="Type of GNN")
+    parser.add_argument("--head", type=int, default=8, help="Number of heads in GAT")
+    parser.add_argument("--ego_range", type=int, default=1, help="Range of the ego network")
+    parser.add_argument("--epochs", type=int, default=50, help="Number of training epochs")
+    parser.add_argument("--activate", type=str, default="leaky_relu", help="Activation function")
+    parser.add_argument("--negative_slope", type=float, default=0.2, help="Negative slope in leaky_relu")
+    return parser.parse_args()
